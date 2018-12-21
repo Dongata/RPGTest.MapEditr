@@ -1,13 +1,11 @@
 ﻿using RPGTest.MapEditr.Components;
 using RPGTest.MapEditr.Entities;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace RPGTest.MapEditr
@@ -20,6 +18,7 @@ namespace RPGTest.MapEditr
         private Map _actualMap;
         private ObservableCollection<Image> _sprites;
         private TileView _selectedTile;
+        private string _selectedLayer = "Ground";
 
         public App() : base()
         {
@@ -31,6 +30,16 @@ namespace RPGTest.MapEditr
                 Source = new BitmapImage(new Uri(Path.Combine(AppContext.BaseDirectory, "Resources", "Empty.png")))
             };
             Sprites = new ObservableCollection<Image>() { EmptyImage };
+        }
+
+        public string SelectedLayer
+        {
+            get => _selectedLayer;
+            set
+            {
+                _selectedLayer = value;
+                Notify(nameof(SelectedLayer));
+            }
         }
 
         public Map ActualMap

@@ -6,10 +6,9 @@
              xmlns:local="clr-namespace:RPGTest.MapEditr.Components"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <ScrollViewer HorizontalScrollBarVisibility="Auto"
-                  VerticalScrollBarVisibility="Auto">
-        <Grid Name="MainGrid" Background="Gray">
 
-        </Grid>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                  VerticalScrollBarVisibility="Auto"
+                  Name="ScrMain">
     </ScrollViewer>
 </UserControl>

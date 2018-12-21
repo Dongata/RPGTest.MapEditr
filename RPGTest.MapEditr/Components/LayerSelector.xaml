@@ -15,12 +15,16 @@
 
         <RadioButton Content="Ground Layer"
                      Grid.Row="0"
-                     GroupName="Layers"/>
+                     GroupName="Layers"
+                     IsChecked="True"
+                     Checked="GroundLayerChecked"/>
         <RadioButton Content="Middle Layer"
                      Grid.Row="1"
-                     GroupName="Layers"/>
+                     GroupName="Layers"
+                     Checked="MiddleLayerChecked"/>
         <RadioButton Content="Top Layer"
                      Grid.Row="2"
-                     GroupName="Layers"/>
+                     GroupName="Layers" 
+                     Checked="TopLayerChecked"/>
     </Grid>
 </UserControl>
