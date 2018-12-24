@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RPGTest.MapEditr.Entities;
+using System.ComponentModel;
 using System.Windows.Controls;
 
 namespace RPGTest.MapEditr.Components
@@ -8,9 +9,10 @@ namespace RPGTest.MapEditr.Components
     /// Interaction logic for TileView.xaml
     /// </summary>
     [JsonConverter(typeof(TileJsonConverter))]
-    public partial class TileView : UserControl
+    public partial class TileView : UserControl, INotifyPropertyChanged
     {
         private Image _image;
+        private bool _shouldCollide;
 
         public TileView()
         {
@@ -21,6 +23,16 @@ namespace RPGTest.MapEditr.Components
 
         public int Y { get; set; }
 
+        public bool ShouldCollide
+        {
+            get => _shouldCollide;
+            set
+            {
+                _shouldCollide = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ShouldCollide)));
+            }
+        }
+
         public Image Image
         {
             get => _image;
@@ -28,9 +40,11 @@ namespace RPGTest.MapEditr.Components
             {
                 GrdContent.Children.Clear();
 
-                GrdContent.Children.Add(new Image() { Source = value?.Source ?? new Image().Source});
+                GrdContent.Children.Add(new Image() { Source = value?.Source ?? new Image().Source });
                 _image = value;
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

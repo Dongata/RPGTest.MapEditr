@@ -27,7 +27,9 @@ namespace RPGTest.MapEditr.Components
             if (e.PropertyName == nameof(_app.SelectedTile))
             {
                 DataContext = _app.SelectedTile;
-                CmbImage.SelectedItem = CmbImage.ItemsSource.Cast<Image>().FirstOrDefault(a => a.Source == _app.SelectedTile.Image?.Source);
+                CmbImage.SelectedItem = CmbImage.ItemsSource.Cast<Image>()
+                    .FirstOrDefault(a => a.Source == _app.SelectedTile.Image?.Source);
+
                 UpdateLayout();
             }
             else if (e.PropertyName == nameof(_app.Sprites))
@@ -40,6 +42,11 @@ namespace RPGTest.MapEditr.Components
         private void CmbImage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //_app.SelectedTile.Image 
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            var asd = _app.SelectedTile.ShouldCollide;
         }
     }
 }
